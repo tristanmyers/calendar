@@ -1,11 +1,9 @@
-/* const cell = document.querySelector('.cell');
+const cellsContainer = document.querySelector('.cells');
+const cellElement = document.querySelectorAll('.cell');
 
-function createCell() {
-    const main = document.querySelector('main');
-    let newCell = document.createElement(div);
-    main.appendChild(newCell);
+function createDay(dayOfWeek, dayOfMonth) {
+    console.log(Date.prototype.getDay);
+    console.log(Date.prototype.getDate);
 }
 
-for (let i = 0; i < 4; i++) {
-    createCell();
-} */
+createDay();
