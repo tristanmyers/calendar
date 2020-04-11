@@ -1,9 +1,13 @@
 const cellsContainer = document.querySelector('.cells');
-const cellElement = document.querySelectorAll('.cell');
+const cellElement = document.querySelector('.cell');
 
-function createDay(dayOfWeek, dayOfMonth) {
-    console.log(Date.prototype.getDay);
-    console.log(Date.prototype.getDate);
+function createCell() {
+    let cellNode = cellsContainer.childNodes[1];
+
+    for (let i = 0; i < 32; i++) {
+        let clonedNode = cellNode.cloneNode;
+        return clonedNode.appendChild;
+    }
 }
 
-createDay();
+createCell();
