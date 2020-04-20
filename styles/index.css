@@ -1,30 +1,79 @@
-/* cells */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    top: -21px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header header"
+        "cells cells cells"
+        "footer footer footer";
+}
+
+header {
+    background-color: blueviolet;
+    width: auto;
+    height: 80px;
+    grid-area: header;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 10px;
+}
+
+.month {
+    padding: 15px 0 0 0;
+    font-size: 2rem;
+}
+
+.date {
+    position: relative;
+    text-align: right;
+    font-size: 0.80rem;
+    top: -50px;
+    padding: 0 15px 0 0;
+}
 
 .cells {
+    grid-area: cells;
     position: relative;
-}
+    left: 0;
+} 
 
 .cell {
+    position: relative;
     list-style-type: none;
-    background-color: cadetblue;
-    width: 6.25rem;
+    background-color: rgb(255, 255, 255);
+    width: 7rem;
     height: 6.25rem;
-    margin: 0 25px 25px 0;
+    margin: 0 10px 15px 0;
+    padding: 0 0 0 10px;
     float: left;
+    left: 6px;
+    border: 1px solid rgb(129, 127, 127);
+    border-radius: 5%;
 }
 
-.dayOfWeek {
-    line-height: 0;
+.day-of-week {
+    line-height: 1;
     font-size: 0.8rem;
     text-align: center;
 }
 
-.dayOfMonth {
+.day-of-month {
     line-height: 0;
     font-size: 0.75rem;
     padding: 0 0 0 10px;
 }
 
-hr {
-    border: 0.5px solid black;
+.footer {
+    position: relative;
+    grid-area: footer;
+    background-color: crimson;
+    width: 100%;
+    height: auto;
 }

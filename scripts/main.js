@@ -1,13 +1,15 @@
-const cellsContainer = document.querySelector('.cells');
-const cellElement = document.querySelector('.cell');
+const cellElement = document.querySelectorAll('.cell');
+const cellContainer = document.querySelectorAll('.cells');
+let numberOfCells = 31;
 
-function createCell() {
-    let cellNode = cellsContainer.childNodes[1];
 
-    for (let i = 0; i < 32; i++) {
-        let clonedNode = cellNode.cloneNode;
-        return clonedNode.appendChild;
-    }
-}
+/*
+    create <tr>
+    append <tr> to <tbody>
+    add .cell class to <tr>
 
-createCell();
+    if all else fails just copy paste 31 cells and
+    change display styling to none when less than 31 months
+    then all that is needed to be done is make the days 
+    reactive accordingly
+*/
