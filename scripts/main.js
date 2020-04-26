@@ -20,15 +20,23 @@
 
 const cellElements = Array.from(document.querySelectorAll('.cell'));
 const cellContainer = document.querySelectorAll('.cells');
+const dayOfMonthEle = document.querySelectorAll('.day-of-month');
 let numberOfCells = 31;
 let date = new Date();
 let lastDay =  new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
 
 const weekdayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
  'Saturday', 'Sunday'];
+
+ // creating an array with numbers 1-31.
+let dayNumbers = [];
+
+for (let i = 1; i < 32; i++) {
+    dayNumbers.push(i);
+}
 
 function getLastDay(month, year) {
     return new Date(year, month, 0).getDate();
@@ -64,7 +72,7 @@ function changeDayOfWeek() {
 }
 
 function removeCells() {
-   cellElements.splice(30, 1);
+    cellElements.splice(30, 1);
 //    return cellElements.remove();
 }
 
