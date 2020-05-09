@@ -2,34 +2,18 @@
     make function parameters number of how many months ahead 
     and add that number to getMonth().
 
-    use the last day to decide how many cells i need.
-
-    calendar will probably will only display last, current, 
-    and next month always.
-
     I can leave this out for now but eventually make it where you can select 
     months ahead.
-
-    decide what day of the week the month starts by starting the 
-    month page with the last known day the last month ended.
-
-    could just number every cell for each cell number 1-3l.
-        for the last day of month is less than 31 then remove
-        cells until number of cells is equal to last day of month.
 */
 
-const cellElements = Array.from(document.querySelectorAll('.cell'));
+const cellElementsArray = Array.from(document.querySelectorAll('.cell'));
+const cellElements = document.querySelectorAll('.cell');
 const cellContainer = document.querySelectorAll('.cells');
 const dayOfMonthEle = document.querySelectorAll('.day-of-month');
 let numberOfCells = 31;
 let date = new Date();
 let lastDay =  new Date(date.getFullYear(), date.getMonth() + 1, 0);
-
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'];
-
-const weekdayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
- 'Saturday', 'Sunday'];
+const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
  // creating an array with numbers 1-31.
 let dayNumbers = [];
@@ -57,24 +41,51 @@ function getFirstLastDay() {
 
 // change month header to current month.
 function changeMonthHeader() {
-    let month = new Date();
-    let currentMonth = month.getMonth();
+    const options = {month: 'long'};
+    let currentMonth = new Date();
     const monthHeaderElement = document.querySelector('.month');
 
-    return monthHeaderElement.innerHTML = monthNames[currentMonth];
-}
-
-// change day of week in the cell.
-// make sure to match according to month being displayed.
-function changeDayOfWeek() {
-    let date = new Date();
-    let dayOfWeek = date.getDate();
+    return monthHeaderElement.innerHTML = currentMonth.toLocaleDateString('en-US', options);
 }
 
 function removeCells() {
-    cellElements.splice(30, 1);
+    cellElementsArray.splice(30, 1);
 //    return cellElements.remove();
 }
 
-changeMonthHeader();
-removeCells();
+// changes the date on the top right to current date.
+function changeDate() {
+    const dateEle = document.querySelector('.date');
+    let dateFormat = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`; 
+
+    return dateEle.innerHTML = dateFormat;
+}
+
+function changeWeekDay() {
+    const options = {weekday: 'long'};
+    // const dayOfWeek = cellElements[0].childNodes[1];
+    let currentDay = new Date();
+    // testing adding a week day for each cell.
+    for(let i = 0; i < numberOfCells; i++) {
+        cellElementsArray.forEach(cell => {
+            return cellElementsArray.innerHTML = weekDays;
+        });
+    }
+
+    // return dayOfWeek.innerHTML = currentDay.toLocaleDateString('en-US', options);
+}
+
+// ISSUE: can click anywhere on the page and pull up task card.
+// TODO: make the task-card specific to which cell is clicked on.
+function clickCell() {
+    const td = document.querySelector('td');
+    const taskCard = document.querySelector('.task-card-container');
+
+    addEventListener('click', () => {
+        if (taskCard.style.visibility == 'visible') {
+            taskCard.style.visibility = 'hidden';
+        } else {
+            return taskCard.style.visibility = 'visible';
+        }
+    });
+}
