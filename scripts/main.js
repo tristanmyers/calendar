@@ -48,9 +48,15 @@ function changeMonthHeader() {
     return monthHeaderElement.innerHTML = currentMonth.toLocaleDateString('en-US', options);
 }
 
-function removeCells() {
-    cellElementsArray.splice(30, 1);
-//    return cellElements.remove();
+function checkDaysInMonth() {
+    for (let i = 0; i < cellElementsArray.length; i++) {
+        let daysInMonth = getLastDay(date.getMonth() + 1, date.getFullYear());
+        if (daysInMonth < numberOfCells) {
+            cellElements[30].remove(); // could change dispay:none; but why?
+        } else {
+            return ;
+        }
+    }
 }
 
 // changes the date on the top right to current date.
@@ -88,4 +94,10 @@ function clickCell() {
             return taskCard.style.visibility = 'visible';
         }
     });
+}
+
+// highlight current day cell.
+function highlightCurrentDay() {
+    let currentDay = date.getDate();
+    cellElements[currentDay - 1].style.borderColor = 'red';
 }
